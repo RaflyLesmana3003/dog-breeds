@@ -1,0 +1,138 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "FuturaPTDemi";
+  src: url('./assets/webFonts/FuturaPTDemi/font.woff2') format('woff2'), url('./assets/webFonts/FuturaPTDemi/font.woff') format('woff');
+}
+:root {
+  font-family: 'FuturaPTDemi', Arial, Helvetica, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+}
+
+@layer base {
+  :root {
+    /* Color styles */
+    --white--900: rgba(255, 255, 255, 1);
+    --primary--yellow--900: rgba(155, 102, 10, 1);
+    --primary--yellow--800: rgba(227, 150, 15, 1);
+    --primary--yellow--700: rgba(241, 172, 52, 1);
+    --primary--yellow--600: rgba(243, 182, 76, 1);
+    --primary--yellow--500: rgba(246, 200, 120, 1);
+    --primary--yellow--400: rgba(248, 211, 147, 1);
+    --primary--yellow--300: rgba(249, 221, 171, 1);
+    --primary--yellow--200: rgba(251, 231, 195, 1);
+    --primary--yellow--100: rgba(253, 240, 219, 1);
+    --primary--yellow--50: rgba(254, 250, 243, 1);
+    --true--grey--900: rgba(23, 23, 23, 1);
+    --true--grey--800: rgba(38, 38, 38, 1);
+    --true--grey--700: rgba(64, 64, 64, 1);
+    --true--grey--600: rgba(82, 82, 82, 1);
+    --true--grey--500: rgba(115, 115, 115, 1);
+    --true--grey--400: rgba(163, 163, 163, 1);
+    --true--grey--300: rgba(212, 212, 212, 1);
+    --true--grey--200: rgba(229, 229, 229, 1);
+    --true--grey--100: rgba(245, 245, 245, 1);
+    --true--grey--50: rgba(250, 250, 250, 1);
+    --black--100: rgba(0, 0, 0, 1);
+    --black--90: rgba(0, 0, 0, 0.8999999761581421);
+    --black--80: rgba(0, 0, 0, 0.800000011920929);
+    --black--70: rgba(0, 0, 0, 0.699999988079071);
+    --black--60: rgba(0, 0, 0, 0.6000000238418579);
+    --black--50: rgba(0, 0, 0, 0.5);
+    --black--40: rgba(0, 0, 0, 0.4000000059604645);
+    --black--30: rgba(0, 0, 0, 0.30000001192092896);
+    --black--20: rgba(0, 0, 0, 0.20000000298023224);
+    --black--10: rgba(0, 0, 0, 0.10000000149011612);
+    --green--900: rgba(99, 104, 90, 1);
+    --green--800: rgba(133, 139, 119, 1);
+    --green--700: rgba(166, 173, 149, 1);
+    --green--600: rgba(199, 208, 179, 1);
+    --green--500: rgba(221, 231, 199, 1);
+    --green--400: rgba(230, 237, 213, 1);
+    --green--300: rgba(236, 242, 224, 1);
+    --green--200: rgba(241, 245, 233, 1);
+    --green--100: rgba(247, 249, 241, 1);
+    --green--50: rgba(252, 253, 249, 1);
+    --grey--900: rgba(98, 102, 103, 1);
+    --grey--800: rgba(131, 136, 137, 1);
+    --grey--700: rgba(164, 170, 172, 1);
+    --grey--600: rgba(196, 204, 206, 1);
+    --grey--500: rgba(218, 227, 229, 1);
+    --grey--400: rgba(227, 234, 236, 1);
+    --grey--300: rgba(235, 240, 241, 1);
+    --grey--200: rgba(240, 244, 245, 1);
+    --grey--100: rgba(246, 248, 249, 1);
+    --grey--50: rgba(251, 252, 252, 1);
+
+    /* Text-size styles */
+    --headline--h1: 2rem;
+    --headline--h2: 1.5rem;
+    --headline--h3: 1.25rem;
+    --headline--h4: 1.25rem;
+    --headline--h5: 1rem;
+    --body--regular: 1rem;
+    --body--small: 0.875rem;
+    --labels--label-small: 0.875rem;
+    --labels--label-regular: 1rem;
+
+    /* Effect styles */
+    --elevation--light--1:  0px 1px 3px rgba(0, 0, 0, 0.15);
+    --elevation--light--2:  0px 2px 6px rgba(0, 0, 0, 0.15);
+    --elevation--light--3:  0px 4px 8px rgba(0, 0, 0, 0.15);
+    --elevation--light--4:  0px 6px 10px rgba(0, 0, 0, 0.15);
+    --elevation--light--5:  0px 8px 12px rgba(0, 0, 0, 0.15);
+
+
+    --background: rgb(255, 255, 255);
+    --foreground: rgb(25, 25, 25);
+    --card: rgb(255, 255, 255);
+    --card-foreground: rgb(25, 25, 25);
+    --popover: rgb(255, 255, 255);
+    --popover-foreground: rgb(25, 25, 25);
+    --primary: rgba(243, 182, 76, 1);
+    --primary-foreground: rgb(255, 255, 255);
+    --secondary: rgba(199, 208, 179, 1);
+    --secondary-foreground: rgba(218, 227, 229, 1);
+    --muted: rgba(212, 212, 212, 1);
+    --muted-foreground: rgba(115, 115, 115, 1);
+    --accent: rgb(247, 247, 247);
+    --accent-foreground: rgb(22, 22, 22);
+    --destructive: rgb(214, 122, 102);
+    --destructive-foreground: rgb(214, 122, 102);
+    --border: rgba(212, 212, 212, 1);
+    --input: rgba(212, 212, 212, 1);
+    --ring: rgb(25, 25, 25);
+    --chart-1: rgb(204, 222, 199);
+    --chart-2: rgb(229, 198, 184);
+    --chart-3: rgb(239, 191, 176);
+    --chart-4: rgb(189, 220, 208);
+    --chart-5: rgb(173, 229, 210);
+    --radius: 0.5rem;
+  }
+
+  /* Typography styles */
+  h1 {
+    font-size: var(--headline--h1);
+  }
+  h2 {
+    font-size: var(--headline--h2);
+  }
+  h3 {
+    font-size: var(--headline--h3);
+  }
+  h4 {
+    font-size: var(--headline--h4);
+  }
+  h5 {
+    font-size: var(--headline--h5);
+  }
+  p {
+    font-size: var(--body--regular);
+  }
+  small {
+    font-size: var(--body--small);
+  }
+}
