@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Inter:700|Fustat');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -19,9 +21,9 @@
     --primary--yellow--900: rgba(155, 102, 10, 1);
     --primary--yellow--800: rgba(227, 150, 15, 1);
     --primary--yellow--700: rgba(241, 172, 52, 1);
-    --primary--yellow--600: rgba(243, 182, 76, 1);
+    --primary--yellow--600: #f3b64c;
     --primary--yellow--500: rgba(246, 200, 120, 1);
-    --primary--yellow--400: rgba(248, 211, 147, 1);
+    --primary--yellow--400: hsl(38, 88%, 77%);
     --primary--yellow--300: rgba(249, 221, 171, 1);
     --primary--yellow--200: rgba(251, 231, 195, 1);
     --primary--yellow--100: rgba(253, 240, 219, 1);
@@ -35,7 +37,7 @@
     --true--grey--300: rgba(212, 212, 212, 1);
     --true--grey--200: rgba(229, 229, 229, 1);
     --true--grey--100: rgba(245, 245, 245, 1);
-    --true--grey--50: rgba(250, 250, 250, 1);
+    --true--grey--50: hsl(0, 0%, 98%);
     --black--100: rgba(0, 0, 0, 1);
     --black--90: rgba(0, 0, 0, 0.8999999761581421);
     --black--80: rgba(0, 0, 0, 0.800000011920929);
@@ -49,7 +51,7 @@
     --green--900: rgba(99, 104, 90, 1);
     --green--800: rgba(133, 139, 119, 1);
     --green--700: rgba(166, 173, 149, 1);
-    --green--600: rgba(199, 208, 179, 1);
+    --green--600: #c7d0b3;
     --green--500: rgba(221, 231, 199, 1);
     --green--400: rgba(230, 237, 213, 1);
     --green--300: rgba(236, 242, 224, 1);
@@ -59,7 +61,7 @@
     --grey--900: rgba(98, 102, 103, 1);
     --grey--800: rgba(131, 136, 137, 1);
     --grey--700: rgba(164, 170, 172, 1);
-    --grey--600: rgba(196, 204, 206, 1);
+    --grey--600: #c4ccce;
     --grey--500: rgba(218, 227, 229, 1);
     --grey--400: rgba(227, 234, 236, 1);
     --grey--300: rgba(235, 240, 241, 1);
@@ -86,14 +88,14 @@
     --elevation--light--5:  0px 8px 12px rgba(0, 0, 0, 0.15);
 
 
-    --background: rgb(255, 255, 255);
+    --background: #fefcf9;
     --foreground: rgb(25, 25, 25);
     --card: rgb(255, 255, 255);
     --card-foreground: rgb(25, 25, 25);
     --popover: rgb(255, 255, 255);
     --popover-foreground: rgb(25, 25, 25);
-    --primary: rgba(243, 182, 76, 1);
-    --primary-foreground: rgb(255, 255, 255);
+    --primary: hsl(38, 87%, 63%);
+    --primary-foreground: rgba(23, 23, 23, 1);
     --secondary: rgba(199, 208, 179, 1);
     --secondary-foreground: rgba(218, 227, 229, 1);
     --muted: rgba(212, 212, 212, 1);
@@ -111,6 +113,14 @@
     --chart-4: rgb(189, 220, 208);
     --chart-5: rgb(173, 229, 210);
     --radius: 0.5rem;
+    --sidebar-background: 38 87% 63%;
+    --sidebar-foreground: 0 0% 9%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
   }
 
   /* Typography styles */
@@ -130,9 +140,30 @@
     font-size: var(--headline--h5);
   }
   p {
+    font-family: 'Fustat';
     font-size: var(--body--regular);
+    @apply font-thin text-sm
   }
   small {
     font-size: var(--body--small);
+  }
+  .dark {
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
   }
 }
