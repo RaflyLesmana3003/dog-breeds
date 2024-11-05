@@ -94,9 +94,9 @@
     --card-foreground: rgb(25, 25, 25);
     --popover: rgb(255, 255, 255);
     --popover-foreground: rgb(25, 25, 25);
-    --primary: hsl(38, 87%, 63%);
+    --primary: rgb(243, 183, 79);
     --primary-foreground: rgba(23, 23, 23, 1);
-    --secondary: rgba(199, 208, 179, 1);
+    --secondary: #c7d0b3;
     --secondary-foreground: rgba(218, 227, 229, 1);
     --muted: rgba(212, 212, 212, 1);
     --muted-foreground: rgba(115, 115, 115, 1);
@@ -139,7 +139,7 @@
   h5 {
     font-size: var(--headline--h5);
   }
-  p {
+  p, li {
     font-family: 'Fustat';
     font-size: var(--body--regular);
     @apply font-thin text-sm
@@ -147,15 +147,13 @@
   small {
     font-size: var(--body--small);
   }
-  .dark {
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+  
+  .mardown > h1,h2,h3 {
+    margin-bottom: 1rem;
+  }
+
+  .mardown > ul > li {
+    @apply list-disc ml-4
   }
 }
 
@@ -167,3 +165,4 @@
     @apply bg-background text-foreground;
   }
 }
+

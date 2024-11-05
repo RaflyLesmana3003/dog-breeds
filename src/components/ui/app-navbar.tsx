@@ -1,5 +1,4 @@
 import { Link } from '@tanstack/react-router';
-import { CalendarIcon, HomeIcon, MailIcon, PencilIcon } from 'lucide-react';
 
 import { cn } from '../../lib/utils';
 import { buttonVariants } from './button';
@@ -7,6 +6,8 @@ import { Dock, DockIcon } from './dock';
 import { Separator } from './separator';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from './tooltip';
 import { SidebarTrigger } from './sidebar';
+import { Avatar, AvatarFallback, AvatarImage } from './avatar';
+import { useAuth } from '../../lib/isAuthenticated';
 
 export type IconProps = React.HTMLAttributes<SVGElement>;
  
@@ -35,10 +36,15 @@ const DATA = {
   ]
 };
 export function Navbar() {
+
+  const { userLoggedIn, currentUser } = useAuth()
+  
+  
   return (
+    <TooltipProvider>
+
     <div className='flex items-center justify-between'>
-      <TooltipProvider>
-        <Dock direction="middle" className='mt-0 border' >
+        <Dock direction="middle" className='m-0  border' >
           <DockIcon key={1}>
             <SidebarTrigger/>
           </DockIcon>
@@ -65,7 +71,19 @@ export function Navbar() {
             </DockIcon>
           ))}
         </Dock>
-      </TooltipProvider>
+
+      <div className="flex items-center gap-2 mr-4">
+              {userLoggedIn && 
+        <>
+          <div>
+            <h5>{currentUser?.displayName}</h5>
+            <p>{currentUser?.email}</p>
+          </div>
+        </>
+        }
+      </div>
     </div>
+    </TooltipProvider>
+
   );
 }
