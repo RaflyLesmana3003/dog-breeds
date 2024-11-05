@@ -5,9 +5,15 @@ import { Button } from "../ui/button";
 import BlurFade from "../../src/components/ui/blur-fade";
 import { Heart } from "lucide-react";
 import { useLikeFavorite } from "../../services/favorite/like";
+import { useLikedFavorites } from "../../services/favorite/getLiked";
+interface FeedsProps {
+  isLikedFavorite?: boolean;
+}
 
-function Feeds() {
-  const { favorites, isLoading, refetch } = useAllFavorites();
+function Feeds({ isLikedFavorite = false }: FeedsProps) {
+
+    
+  const { favorites, isLoading, refetch } = isLikedFavorite ? useLikedFavorites() : useAllFavorites();
 
   const {likeFavorite, unlikeFavorite} = useLikeFavorite()
   return (

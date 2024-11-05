@@ -14,6 +14,9 @@ import { Route as rootRoute } from './routes/__root'
 import { Route as SignupImport } from './routes/signup'
 import { Route as LoginImport } from './routes/login'
 import { Route as UserIndexImport } from './routes/user/index'
+import { Route as UserLikesIndexImport } from './routes/user/likes/index'
+import { Route as GamesMisteryDogsIndexImport } from './routes/games/mistery-dogs/index'
+import { Route as GamesBreedGuesserIndexImport } from './routes/games/breed-guesser/index'
 
 // Create/Update Routes
 
@@ -32,6 +35,24 @@ const LoginRoute = LoginImport.update({
 const UserIndexRoute = UserIndexImport.update({
   id: '/user/',
   path: '/user/',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const UserLikesIndexRoute = UserLikesIndexImport.update({
+  id: '/user/likes/',
+  path: '/user/likes/',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const GamesMisteryDogsIndexRoute = GamesMisteryDogsIndexImport.update({
+  id: '/games/mistery-dogs/',
+  path: '/games/mistery-dogs/',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const GamesBreedGuesserIndexRoute = GamesBreedGuesserIndexImport.update({
+  id: '/games/breed-guesser/',
+  path: '/games/breed-guesser/',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -60,6 +81,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof UserIndexImport
       parentRoute: typeof rootRoute
     }
+    '/games/breed-guesser/': {
+      id: '/games/breed-guesser/'
+      path: '/games/breed-guesser'
+      fullPath: '/games/breed-guesser'
+      preLoaderRoute: typeof GamesBreedGuesserIndexImport
+      parentRoute: typeof rootRoute
+    }
+    '/games/mistery-dogs/': {
+      id: '/games/mistery-dogs/'
+      path: '/games/mistery-dogs'
+      fullPath: '/games/mistery-dogs'
+      preLoaderRoute: typeof GamesMisteryDogsIndexImport
+      parentRoute: typeof rootRoute
+    }
+    '/user/likes/': {
+      id: '/user/likes/'
+      path: '/user/likes'
+      fullPath: '/user/likes'
+      preLoaderRoute: typeof UserLikesIndexImport
+      parentRoute: typeof rootRoute
+    }
   }
 }
 
@@ -69,12 +111,18 @@ export interface FileRoutesByFullPath {
   '/login': typeof LoginRoute
   '/signup': typeof SignupRoute
   '/user': typeof UserIndexRoute
+  '/games/breed-guesser': typeof GamesBreedGuesserIndexRoute
+  '/games/mistery-dogs': typeof GamesMisteryDogsIndexRoute
+  '/user/likes': typeof UserLikesIndexRoute
 }
 
 export interface FileRoutesByTo {
   '/login': typeof LoginRoute
   '/signup': typeof SignupRoute
   '/user': typeof UserIndexRoute
+  '/games/breed-guesser': typeof GamesBreedGuesserIndexRoute
+  '/games/mistery-dogs': typeof GamesMisteryDogsIndexRoute
+  '/user/likes': typeof UserLikesIndexRoute
 }
 
 export interface FileRoutesById {
@@ -82,14 +130,36 @@ export interface FileRoutesById {
   '/login': typeof LoginRoute
   '/signup': typeof SignupRoute
   '/user/': typeof UserIndexRoute
+  '/games/breed-guesser/': typeof GamesBreedGuesserIndexRoute
+  '/games/mistery-dogs/': typeof GamesMisteryDogsIndexRoute
+  '/user/likes/': typeof UserLikesIndexRoute
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/login' | '/signup' | '/user'
+  fullPaths:
+    | '/login'
+    | '/signup'
+    | '/user'
+    | '/games/breed-guesser'
+    | '/games/mistery-dogs'
+    | '/user/likes'
   fileRoutesByTo: FileRoutesByTo
-  to: '/login' | '/signup' | '/user'
-  id: '__root__' | '/login' | '/signup' | '/user/'
+  to:
+    | '/login'
+    | '/signup'
+    | '/user'
+    | '/games/breed-guesser'
+    | '/games/mistery-dogs'
+    | '/user/likes'
+  id:
+    | '__root__'
+    | '/login'
+    | '/signup'
+    | '/user/'
+    | '/games/breed-guesser/'
+    | '/games/mistery-dogs/'
+    | '/user/likes/'
   fileRoutesById: FileRoutesById
 }
 
@@ -97,12 +167,18 @@ export interface RootRouteChildren {
   LoginRoute: typeof LoginRoute
   SignupRoute: typeof SignupRoute
   UserIndexRoute: typeof UserIndexRoute
+  GamesBreedGuesserIndexRoute: typeof GamesBreedGuesserIndexRoute
+  GamesMisteryDogsIndexRoute: typeof GamesMisteryDogsIndexRoute
+  UserLikesIndexRoute: typeof UserLikesIndexRoute
 }
 
 const rootRouteChildren: RootRouteChildren = {
   LoginRoute: LoginRoute,
   SignupRoute: SignupRoute,
   UserIndexRoute: UserIndexRoute,
+  GamesBreedGuesserIndexRoute: GamesBreedGuesserIndexRoute,
+  GamesMisteryDogsIndexRoute: GamesMisteryDogsIndexRoute,
+  UserLikesIndexRoute: UserLikesIndexRoute,
 }
 
 export const routeTree = rootRoute
@@ -117,7 +193,10 @@ export const routeTree = rootRoute
       "children": [
         "/login",
         "/signup",
-        "/user/"
+        "/user/",
+        "/games/breed-guesser/",
+        "/games/mistery-dogs/",
+        "/user/likes/"
       ]
     },
     "/login": {
@@ -128,6 +207,15 @@ export const routeTree = rootRoute
     },
     "/user/": {
       "filePath": "user/index.tsx"
+    },
+    "/games/breed-guesser/": {
+      "filePath": "games/breed-guesser/index.tsx"
+    },
+    "/games/mistery-dogs/": {
+      "filePath": "games/mistery-dogs/index.tsx"
+    },
+    "/user/likes/": {
+      "filePath": "user/likes/index.tsx"
     }
   }
 }
