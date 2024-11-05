@@ -14,7 +14,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         </nav>
         {children}
 
-        <div className="fixed bottom-[-20px] right-[-0px] rotate-[-34deg] transition-transform hover:rotate-[-38deg] hover:animate-jiggle z-0">
+        <div className="fixed bottom-[-20px] right-[-0px] rotate-[-34deg] transition-transform hover:rotate-[-38deg] hover:animate-jiggle z-[-10]">
           <img src={Paw} alt="dog breeds" width={150}/>
         </div>
       </main>

@@ -39,7 +39,7 @@ function Index() {
     { breed: string; imageUrl: string }[]
   >([]);
   const itemsPerPage = 20;
-  const {favorites, isLoading} = useFavorites()
+  const {favorites, isLoading, refetch} = useFavorites()
   const {addFavorite, isLoading: loadingAddFavorite} = useAddFavorite()
 
   const { userLoggedIn, loading, currentUser } = useAuth();
@@ -73,7 +73,9 @@ function Index() {
   };
 
   const submitFavorite = async () => {
-    await addFavorite(selectedFavorite);
+    await addFavorite(selectedFavorite).then(() => {
+      refetch()
+    })
   };
 
   return (
