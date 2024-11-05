@@ -1,9 +1,9 @@
 
 export const firebaseConfig = {
-    apiKey: "AIzaSyABCE5XS7y4tU7O4cdpD4qDpHKBO9Bq7oY",
-    authDomain: "dog-breeds-2d28a.firebaseapp.com",
-    projectId: "dog-breeds-2d28a",
-    storageBucket: "dog-breeds-2d28a.firebasestorage.app",
-    messagingSenderId: "615651260425",
-    appId: "1:615651260425:web:c341d67285ee84e7a4a0d8"
-  };
+  apiKey: import.meta.env.VITE_API_KEY,
+  authDomain: import.meta.env.VITE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_APP_ID,
+};
