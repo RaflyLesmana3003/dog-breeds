@@ -1,14 +1,13 @@
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute, useNavigate } from '@tanstack/react-router';
+import { updateProfile } from 'firebase/auth';
+import { useState } from 'react';
 
-import { useState } from 'react'
-import { useNavigate } from '@tanstack/react-router'
-import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth'
-import { auth } from '../main'
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '../components/ui/card'
-import { Label } from '../components/ui/label'
-import { Input } from '../components/ui/input'
-import { Button } from '../components/ui/button'
-import { signupWithEmailAndPassword } from '../services/auth/signup'
+import HourGlass from '../assets/icons/Hourglass.svg';
+import { Button } from '../components/ui/button';
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '../components/ui/card';
+import { Input } from '../components/ui/input';
+import { Label } from '../components/ui/label';
+import { signupWithEmailAndPassword } from '../services/auth/signup';
 
 export const Route = createFileRoute('/signup')({
   component: Signup
@@ -151,7 +150,7 @@ function Signup() {
                 type="submit"
                 disabled={isLoading}
               >
-                {isLoading ? "Creating account..." : "Create account"}
+                {isLoading ? <img src={HourGlass}/> : "Create account"}
               </Button>
             </div>
           </form>

@@ -23,7 +23,6 @@ export const db = getFirestore(app);
 
 export default app;
 
-
 const rootElement = document.getElementById('root')!
 if (!rootElement.innerHTML) {
   const root = ReactDOM.createRoot(rootElement)

@@ -8,12 +8,12 @@ export default function BreedsCard({
   name = "John Doe", 
   avatarUrl = "/placeholder.svg?height=40&width=40",
   onSelect = (breeds: string) => {},
-  isSelected
+  disabled
 }: { 
   name?: string, 
   avatarUrl?: string,
   onSelect?: (breeds: string) => void,
-  isSelected: boolean
+  disabled: boolean
 }) {
   const [avatar, setAvatar] = useState<string>('')
   const [isLoading, setIsLoading] = useState(true)
@@ -44,9 +44,10 @@ export default function BreedsCard({
     <button
       className="w-full max-w-md text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-primary rounded-lg"
       onClick={() => {onSelect(name)}}
+      disabled={disabled}
       aria-label={`Select ${name}`}
     >
-      <Card className={`transition-all duration-200 ease-in-out hover:bg-accent hover:shadow-md cursor-pointer transform hover:scale-105 ${isSelected ? 'bg-primary' : 'border-primary-foreground/15'} hover:border-primary hover:bg-[white]`} >
+      <Card className={`transition-all duration-200 ease-in-out hover:bg-accent hover:shadow-md cursor-pointer transform  ${disabled ? 'bg-white opacity-30 hover:shadow-none cursor-not-allowed' : 'border-primary-foreground/15 hover:scale-105'} hover:border-primary hover:bg-[white]`} >
         <CardContent className="p-4">
           <div className="flex items-center space-x-4">
               <div className={`h-12 w-12 rounded-full ${isLoading ? 'animate-pulse bg-[--primary--yellow--900]' : 'hidden'}`} />

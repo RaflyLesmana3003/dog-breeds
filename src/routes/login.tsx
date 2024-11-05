@@ -1,13 +1,12 @@
-import { createFileRoute, Link, redirect } from '@tanstack/react-router'
+import { createFileRoute, Link } from '@tanstack/react-router';
+import { useState } from 'react';
 
-import { useState } from 'react'
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '../components/ui/card'
-import { Input } from '../components/ui/input'
-import { Button } from '../components/ui/button'
-import { Label } from '../components/ui/label'
-import { signInWithEmailAndPassword } from 'firebase/auth'
-import { auth } from '../main'
-import { loginWithEmailAndPassword } from '../services/auth/login'
+import HourGlass from '../assets/icons/Hourglass.svg';
+import { Button } from '../components/ui/button';
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '../components/ui/card';
+import { Input } from '../components/ui/input';
+import { Label } from '../components/ui/label';
+import { loginWithEmailAndPassword } from '../services/auth/login';
 
 export const Route = createFileRoute('/login')({
   component: Login
@@ -78,7 +77,7 @@ function Login() {
                 type="submit"
                 disabled={isLoading}
               >
-                {isLoading ? "Signing in..." : "Sign in"}
+                {isLoading ? <img src={HourGlass}/> : 'Sign In'}
               </Button>
             </div>
           </form>

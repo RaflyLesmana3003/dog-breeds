@@ -130,10 +130,12 @@ export function BreedInfo({breed, selectButton, onSelected}: BreedInfoProps) {
                   alt={`Random breed image ${idx + 1}`}
                 />
 
-                <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-0 group-hover:bg-opacity-60 transition duration-300" onClick={() => {
+                <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-0 group-hover:bg-opacity-60 transition duration-300">
+                  <div onClick={() => {
                     onSelected(breed, imageUrl)
                   }}>
-                  {selectButton}
+                    {selectButton}
+                  </div>
                 </div>
               </div>
             </BlurFade>

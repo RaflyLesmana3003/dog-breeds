@@ -13,7 +13,6 @@
 import { Route as rootRoute } from './routes/__root'
 import { Route as SignupImport } from './routes/signup'
 import { Route as LoginImport } from './routes/login'
-import { Route as BreedsImport } from './routes/breeds'
 import { Route as UserIndexImport } from './routes/user/index'
 
 // Create/Update Routes
@@ -30,12 +29,6 @@ const LoginRoute = LoginImport.update({
   getParentRoute: () => rootRoute,
 } as any)
 
-const BreedsRoute = BreedsImport.update({
-  id: '/breeds',
-  path: '/breeds',
-  getParentRoute: () => rootRoute,
-} as any)
-
 const UserIndexRoute = UserIndexImport.update({
   id: '/user/',
   path: '/user/',
@@ -46,13 +39,6 @@ const UserIndexRoute = UserIndexImport.update({
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/breeds': {
-      id: '/breeds'
-      path: '/breeds'
-      fullPath: '/breeds'
-      preLoaderRoute: typeof BreedsImport
-      parentRoute: typeof rootRoute
-    }
     '/login': {
       id: '/login'
       path: '/login'
@@ -80,14 +66,12 @@ declare module '@tanstack/react-router' {
 // Create and export the route tree
 
 export interface FileRoutesByFullPath {
-  '/breeds': typeof BreedsRoute
   '/login': typeof LoginRoute
   '/signup': typeof SignupRoute
   '/user': typeof UserIndexRoute
 }
 
 export interface FileRoutesByTo {
-  '/breeds': typeof BreedsRoute
   '/login': typeof LoginRoute
   '/signup': typeof SignupRoute
   '/user': typeof UserIndexRoute
@@ -95,7 +79,6 @@ export interface FileRoutesByTo {
 
 export interface FileRoutesById {
   __root__: typeof rootRoute
-  '/breeds': typeof BreedsRoute
   '/login': typeof LoginRoute
   '/signup': typeof SignupRoute
   '/user/': typeof UserIndexRoute
@@ -103,22 +86,20 @@ export interface FileRoutesById {
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/breeds' | '/login' | '/signup' | '/user'
+  fullPaths: '/login' | '/signup' | '/user'
   fileRoutesByTo: FileRoutesByTo
-  to: '/breeds' | '/login' | '/signup' | '/user'
-  id: '__root__' | '/breeds' | '/login' | '/signup' | '/user/'
+  to: '/login' | '/signup' | '/user'
+  id: '__root__' | '/login' | '/signup' | '/user/'
   fileRoutesById: FileRoutesById
 }
 
 export interface RootRouteChildren {
-  BreedsRoute: typeof BreedsRoute
   LoginRoute: typeof LoginRoute
   SignupRoute: typeof SignupRoute
   UserIndexRoute: typeof UserIndexRoute
 }
 
 const rootRouteChildren: RootRouteChildren = {
-  BreedsRoute: BreedsRoute,
   LoginRoute: LoginRoute,
   SignupRoute: SignupRoute,
   UserIndexRoute: UserIndexRoute,
@@ -134,14 +115,10 @@ export const routeTree = rootRoute
     "__root__": {
       "filePath": "__root.tsx",
       "children": [
-        "/breeds",
         "/login",
         "/signup",
         "/user/"
       ]
-    },
-    "/breeds": {
-      "filePath": "breeds.tsx"
     },
     "/login": {
       "filePath": "login.tsx"
