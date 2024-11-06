@@ -1,14 +1,19 @@
 # Dog Breeds React Project
 
+<video controls src="demo.mp4" title="Title"></video>
+You can view a live demo of the application at https://dog-breeds-2d28a.web.app.
+
+
 ## Table of Contents
 
 - [Introduction](#introduction)
-- [Getting Started](#getting-started)
-- [Demo](#demo)
 - [Technologies Used](#technologies-used)
-- [Firestore Data Structure](#firestore-data-structure)
+- [Getting Started](#getting-started)
+- [Favourites Collection](#firestore-collection)
 - [Security](#security)
-- [Refactoring with Node.js Firebase Function](#refactoring-with-nodejs-firebase-function)
+- [Refactoring with Node.js Firebase Function](#refactoring)
+- [Unit Test Approach](#unit-test-approach)
+
 
 ## Introduction
 
@@ -18,6 +23,17 @@ This project is a React application that provides information about different do
 - **Breed Images:** A gallery of images for each breed, allowing users to visualize their appearance.
 - **Favorite Breeds:** Users can save their favorite breeds to a personalized list.
 - **Games:** Interactive games related to dog breeds, such as a breed guessing game. (Coming soon)
+
+## Technologies Used
+- **React:** JavaScript library for building user interfaces.
+- **Node.js (v18):** JavaScript runtime environment for server-side development.
+- **npm (v10):** Package manager for Node.js.
+- **Tailwind CSS:** Utility-first CSS framework for styling.
+- **Firebase:** Backend services for authentication, database, and storage.
+- **@tanstack/react-router:** Routing library for navigation.
+- **@google/generative-ai:** Library for using Gemini AI models to generate detailed breed information.
+- **shadcn:** UI components library for building beautiful and accessible user interfaces.
+
 
 ## Getting Started
 
@@ -41,35 +57,21 @@ This project is a React application that provides information about different do
    npm run dev
    ```
 
-The application will be accessible at `http://localhost:5173`.
+## Firestore collection
 
-## Demo
-
-You can view a live demo of the application at https://dog-breeds-2d28a.web.app/user.
-
-## Technologies Used
-
-- **React:** JavaScript library for building user interfaces.
-- **Tailwind CSS:** Utility-first CSS framework for styling.
-- **Firebase:** Backend services for authentication, database, and storage.
-- **@tanstack/react-router:** Routing library for navigation.
-- **@google/generative-ai:** Library for using Gemini AI models to generate detailed breed information.
-- **shadcn:** UI components library for building beautiful and accessible user interfaces.
-
-## Firestore Data Structure
-
-**Favorites Collection:**
+**Favourites Collection:**
+![firestore collection](collection.png)
 
 | Field | Data Type | Description |
 |---|---|---|
 | `breed` | String | The name of the dog breed. |
 | `imageUrl` | String | The URL of the breed's image. |
 | `id` | String | The unique ID of the document. |
-| `userId` | String | The user's ID who added the favorite. |
+| `userId` | String | The user's ID who added the favourites. |
 | `userName` | String | The user's display name. |
 | `totalLikes` | Number | The total number of likes the breed has received. |
-| `createdAt` | Timestamp | The timestamp when the favorite was added. |
-| `updatedAt` | Timestamp | The timestamp when the favorite was last updated. |
+| `createdAt` | Timestamp | The timestamp when the favourites was added. |
+| `updatedAt` | Timestamp | The timestamp when the favourites was last updated. |
 | `likedBy` | Array of Strings | An array of user IDs who have liked the breed. |
 
 **Example Document:**
@@ -91,25 +93,49 @@ You can view a live demo of the application at https://dog-breeds-2d28a.web.app/
 ## Security
 
 The solution is secure because:
-
 - **Authentication:** Users must be authenticated before they can add favorites or like breeds. This prevents unauthorized access to user data.
 - **Firestore Security Rules:** Firestore security rules can be implemented to restrict access to data based on user roles or permissions. For example, only authenticated users can read and write to the `favorites` collection.
 - **Data Validation:** Data validation can be implemented to ensure that only valid data is stored in the database. For example, the `breed` field can be validated to ensure that it is a valid dog breed.
 
-## Refactoring with Node.js Firebase Function
+## Refactoring
 
-**Task:**
+**Refactoring Approach:**
 
-Create a Node.js Firebase function that connects to the `dog.ceo` API endpoint (`https://dog.ceo/api/breeds/list/all`) and fattens the data into a single array of strings.
+To refactor the code and ensure that only the service directory needs to be changed, we can follow this approach:
+
+**Refactoring with Node.js Firebase Function:**
+
+To refactor the solution to include a Node.js Firebase function that connects to the `dog.ceo` API endpoint and fattens the data into a single array of strings, we can follow these steps:
+
+1. **Create a Firebase Function:** Create a new Firebase function in the `functions` directory. This function will be responsible for fetching the data from the `dog.ceo` API and transforming it into a single array of strings.
+
+2. **Implement the Function:** In the Firebase function, implement the following:
+   - **API Request:** Make a request to the `dog.ceo` API endpoint to retrieve the list of all dog breeds.
+   - **Data Parsing:** Parse the response from the API and transform it into a single array of strings, where each string represents a dog breed.
+   - **Error Handling:** Handle potential errors during the API request or data parsing.
+   - **Data Storage:** Store the resulting array of strings in a Firestore collection.
+
+3. **Deploy the Function:** Deploy the Firebase function to your Firebase project.
+
+4. **Utilize the Function:** In your React application, use the Firebase function to retrieve the list of dog breeds from the Firestore collection.
 
 **Considerations:**
 
-- **API Request:** The function should make a request to the `dog.ceo` API endpoint to retrieve the list of all dog breeds.
-- **Data Parsing:** The response from the API should be parsed and transformed into a single array of strings, where each string represents a dog breed.
-- **Error Handling:** The function should handle potential errors during the API request or data parsing.
-- **Deployment:** The function should be deployed to Firebase to be accessible from the application.
+- **Security:** Ensure that the Firebase function is properly secured to prevent unauthorized access.
+- **Scalability:** Consider the scalability of the Firebase function and the Firestore collection.
+- **Caching:** Implement caching to reduce the number of API requests and improve performance.
+- **Error Handling:** Implement robust error handling to ensure that the function is resilient to errors.
+- **Server-Side Pagination:** Implement server-side pagination to handle large datasets efficiently. This involves fetching only a subset of data at a time, based on the current page or offset.
 
-**Unit Test Approach:**
+**Notes:**
+
+- **Centralized Logic:** All the logic related to fetching and parsing dog breeds is centralized in the `src/services` directory.
+- **Maintainability:** Changes to the API request or data parsing logic only require modifications within the `src/services` directory.
+- **Reusability:** The service can be reused in multiple components or routes without duplicating code.
+
+
+
+## Unit Test Approach
 
 **Example Unit Test:**
 
@@ -130,7 +156,3 @@ describe('getBreeds', () => {
 - **API Request:** Verify that the function makes a request to the correct API endpoint.
 - **Data Parsing:** Ensure that the response from the API is parsed correctly and transformed into a single array of strings.
 - **Error Handling:** Test the function's ability to handle errors during the API request or data parsing.
-
-**Conclusion:**
-
-By implementing these security measures, refactoring the solution with a Node.js Firebase function, and writing unit tests, we can ensure that the application is secure, reliable, and scalable.
