@@ -22,7 +22,7 @@ This project is a React application that provides information about different do
 - **Breed Information:** Detailed descriptions of various dog breeds, including their physical characteristics, temperament, and unique traits.
 - **Breed Images:** A gallery of images for each breed, allowing users to visualize their appearance.
 - **Favorite Breeds:** Users can save their favorite breeds to a personalized list.
-- **Games:** Interactive games related to dog breeds, such as a breed guessing game. (Coming soon)
+- **Games:** Interactive games related to dog breeds, such as a breed guessing game.
 
 ## Technologies Used
 - **React:** JavaScript library for building user interfaces.
