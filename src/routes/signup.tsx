@@ -79,7 +79,7 @@ function Signup() {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-50 p-4 mt-[-100px]">
+    <div className="min-h-screen flex items-center justify-center  p-4 mt-[-100px]">
       <Card className="w-full max-w-sm">
         <CardHeader className="space-y-1">
           <CardTitle className="text-2xl text-center">Create an account</CardTitle>

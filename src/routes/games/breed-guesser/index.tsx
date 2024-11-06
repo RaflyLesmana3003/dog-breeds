@@ -6,5 +6,5 @@ export const Route = createFileRoute('/games/breed-guesser/')({
 })
 
 function RouteComponent() {
-  return 'Hello /games/breed-guesser/!'
+  return 'Coming soon'
 }
