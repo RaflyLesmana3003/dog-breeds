@@ -1,8 +1,7 @@
-import { Card, CardContent } from "@/components/ui/card"
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
-import { Skeleton } from "@/components/ui/skeleton"
-import { useEffect, useState } from "react"
-import BlurFade from "../../src/components/ui/blur-fade"
+import { Avatar, AvatarImage } from '@/components/ui/avatar';
+import { Card, CardContent } from '@/components/ui/card';
+import { Skeleton } from '@/components/ui/skeleton';
+import { useEffect, useState } from 'react';
 
 export default function BreedsCard({ 
   name = "John Doe", 

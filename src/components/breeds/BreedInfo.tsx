@@ -4,8 +4,6 @@ import React, { useEffect, useState, useRef, useCallback } from "react";
 import BlurFade from "../../src/components/ui/blur-fade";
 import { getBreedImages } from "../../services/breeds/getBreedImages";
 import usePagination from "../../hooks/usePagination";
-import Heart from '../../assets/icons/Heart.svg'
-import { Button } from '../ui/button';
 import { genAI } from "../../lib/gemini";
 import FlickeringGrid from "../../src/components/ui/flickering-grid";
 

@@ -43,10 +43,7 @@ function Index() {
   const {addFavorite, isLoading: loadingAddFavorite} = useAddFavorite()
 
   const { userLoggedIn, loading, currentUser } = useAuth();
-  if (!loading && !userLoggedIn) {
-    return <Navigate to="/login" replace={true} />;
-  }
-
+ 
   useEffect(() => {
     async function fetchBreeds() {
       const response = await getAllBreeds();
@@ -77,6 +74,10 @@ function Index() {
       refetch()
     })
   };
+
+  if (!loading && !userLoggedIn) {
+    return <Navigate to="/login" replace={true} />;
+  }
 
   return (
     <div>
