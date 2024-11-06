@@ -13,7 +13,7 @@ interface FeedsProps {
 function Feeds({ isLikedFavorite = false }: FeedsProps) {
 
     
-  const { favorites, isLoading, refetch } = isLikedFavorite ? useLikedFavorites() : useAllFavorites();
+  const { favorites, refetch } = isLikedFavorite ? useLikedFavorites() : useAllFavorites();
 
   const {likeFavorite, unlikeFavorite} = useLikeFavorite()
   return (

@@ -8,8 +8,7 @@ export const Route = createFileRoute('/user/likes/')({
 
 function Index() {
   const { favorites, isLoading, refetch } = useFavorites()
-  console.log("🚀 ~ Index ~ favorites:", favorites)
-
+  
   if (!isLoading && favorites.length > 0) {
     return <Feeds isLikedFavorite/>
   }
