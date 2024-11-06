@@ -13,6 +13,7 @@
 import { Route as rootRoute } from './routes/__root'
 import { Route as SignupImport } from './routes/signup'
 import { Route as LoginImport } from './routes/login'
+import { Route as IndexImport } from './routes/index'
 import { Route as UserIndexImport } from './routes/user/index'
 import { Route as UserLikesIndexImport } from './routes/user/likes/index'
 import { Route as GamesMisteryDogsIndexImport } from './routes/games/mistery-dogs/index'
@@ -29,6 +30,12 @@ const SignupRoute = SignupImport.update({
 const LoginRoute = LoginImport.update({
   id: '/login',
   path: '/login',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const IndexRoute = IndexImport.update({
+  id: '/',
+  path: '/',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -60,6 +67,13 @@ const GamesBreedGuesserIndexRoute = GamesBreedGuesserIndexImport.update({
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/': {
+      id: '/'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof IndexImport
+      parentRoute: typeof rootRoute
+    }
     '/login': {
       id: '/login'
       path: '/login'
@@ -108,6 +122,7 @@ declare module '@tanstack/react-router' {
 // Create and export the route tree
 
 export interface FileRoutesByFullPath {
+  '/': typeof IndexRoute
   '/login': typeof LoginRoute
   '/signup': typeof SignupRoute
   '/user': typeof UserIndexRoute
@@ -117,6 +132,7 @@ export interface FileRoutesByFullPath {
 }
 
 export interface FileRoutesByTo {
+  '/': typeof IndexRoute
   '/login': typeof LoginRoute
   '/signup': typeof SignupRoute
   '/user': typeof UserIndexRoute
@@ -127,6 +143,7 @@ export interface FileRoutesByTo {
 
 export interface FileRoutesById {
   __root__: typeof rootRoute
+  '/': typeof IndexRoute
   '/login': typeof LoginRoute
   '/signup': typeof SignupRoute
   '/user/': typeof UserIndexRoute
@@ -138,6 +155,7 @@ export interface FileRoutesById {
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
+    | '/'
     | '/login'
     | '/signup'
     | '/user'
@@ -146,6 +164,7 @@ export interface FileRouteTypes {
     | '/user/likes'
   fileRoutesByTo: FileRoutesByTo
   to:
+    | '/'
     | '/login'
     | '/signup'
     | '/user'
@@ -154,6 +173,7 @@ export interface FileRouteTypes {
     | '/user/likes'
   id:
     | '__root__'
+    | '/'
     | '/login'
     | '/signup'
     | '/user/'
@@ -164,6 +184,7 @@ export interface FileRouteTypes {
 }
 
 export interface RootRouteChildren {
+  IndexRoute: typeof IndexRoute
   LoginRoute: typeof LoginRoute
   SignupRoute: typeof SignupRoute
   UserIndexRoute: typeof UserIndexRoute
@@ -173,6 +194,7 @@ export interface RootRouteChildren {
 }
 
 const rootRouteChildren: RootRouteChildren = {
+  IndexRoute: IndexRoute,
   LoginRoute: LoginRoute,
   SignupRoute: SignupRoute,
   UserIndexRoute: UserIndexRoute,
@@ -191,6 +213,7 @@ export const routeTree = rootRoute
     "__root__": {
       "filePath": "__root.tsx",
       "children": [
+        "/",
         "/login",
         "/signup",
         "/user/",
@@ -198,6 +221,9 @@ export const routeTree = rootRoute
         "/games/mistery-dogs/",
         "/user/likes/"
       ]
+    },
+    "/": {
+      "filePath": "index.tsx"
     },
     "/login": {
       "filePath": "login.tsx"
